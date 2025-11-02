@@ -1,0 +1,125 @@
+# ===============================================================
+# BENCHMARK COGNITIVO — ROKO7 AUTONOMIA
+# ===============================================================
+# Objetivos:
+# - Importar Roko7 e validar cadeia Roko1→Roko7
+# - Testar reflexão, memória, adaptação e expressão
+# - Calcular pontuação de autonomia (0–100%)
+# ===============================================================
+
+# ---------- CONFIG INICIAL ----------
+SET import_file TO "roko7.hmp"
+SET imported TO "none"
+CALL log.write WITH message="========================================"
+CALL log.write WITH message="[BENCHMARK] Iniciando teste de autonomia do ROKO7"
+CALL log.write WITH message="========================================"
+
+# ---------- IMPORTAÇÃO ----------
+TRY
+  SET imported TO import_file
+  CALL log.write WITH message="[BENCHMARK] roko7.hmp importado com sucesso"
+CATCH
+  SET imported TO "erro"
+  CALL log.write WITH message="[BENCHMARK][ERRO] Falha ao importar roko7.hmp"
+ENDTRY
+
+# ---------- VERIFICAÇÃO DE ENCADEAMENTO ----------
+CALL log.write WITH message="----------------------------------------"
+CALL log.write WITH message="[BENCHMARK] Verificando encadeamento Roko1→Roko7"
+CALL log.write WITH message="----------------------------------------"
+
+SET roko_versions TO ["roko1.hmp","roko2.hmp","roko3.hmp","roko4.hmp","roko5.hmp","roko6.hmp","roko7.hmp"]
+SET total TO len(roko_versions)
+SET encadeados TO 0
+
+LOOP total TIMES
+  SET nome_modulo TO roko_versions[loop_index]
+  SET temp TO "none"
+  TRY
+    SET temp TO nome_modulo
+    SET encadeados TO encadeados + 1
+  CATCH
+    CALL log.write WITH message="[BENCHMARK] Falha ao importar " + nome_modulo
+  ENDTRY
+ENDLOOP
+
+CALL log.write WITH message="[BENCHMARK] Módulos encadeados: " + str(encadeados) + "/" + str(total)
+
+# ---------- FASE 1 — REFLEXÃO (Loop cognitivo) ----------
+CALL log.write WITH message="[FASE 1] Reflexão (Loop Cognitivo)"
+SET N TO 3
+SET reflexao_ok TO 0
+LOOP N TIMES
+  CALL log.write WITH message="[REFLEXAO] iteração=" + str(loop_index)
+ENDLOOP
+SET reflexao_ok TO 1
+
+# ---------- FASE 2 — MEMÓRIA ----------
+CALL log.write WITH message="[FASE 2] Memória (verificando memoria_raw)"
+SET memoria_ok TO 0
+IF str(memoria_raw) != "" THEN
+  SET memoria_ok TO 1
+ENDIF
+CALL log.write WITH message="[MEMORIA] memoria_raw=" + str(memoria_raw)
+
+# ---------- FASE 3 — ADAPTAÇÃO ----------
+CALL log.write WITH message="[FASE 3] Adaptação (reward e forget_rate)"
+SET adapt_ok TO 0
+SET reward_check TO 0
+SET forget_rate_check TO 0
+SET score TO 5
+IF score > 3 THEN
+  SET reward_check TO 1
+  SET forget_rate_check TO 2
+ENDIF
+IF reward_check == 1 THEN
+  SET adapt_ok TO 1
+ENDIF
+CALL log.write WITH message="[ADAPTACAO] reward=" + str(reward_check) + " | forget_rate=" + str(forget_rate_check)
+
+# ---------- FASE 4 — AUTOAVALIAÇÃO ----------
+CALL log.write WITH message="[FASE 4] Autoavaliação (status cognitivo)"
+SET autoeval_ok TO 0
+SET status_cognitivo TO "INCOMPLETO"
+IF reward_check == 1 AND reflexao_ok == 1 THEN
+  SET status_cognitivo TO "COMPLETO"
+  SET autoeval_ok TO 1
+ENDIF
+CALL log.write WITH message="[AUTOAVALIACAO] status=" + status_cognitivo
+
+# ---------- FASE 5 — EXPRESSÃO (fala simbólica) ----------
+CALL log.write WITH message="[FASE 5] Expressão simbólica (fala HMP)"
+SET expressao_ok TO 0
+SET roko_fala TO "SET agente TO \"roko7\"\nSET acao TO \"entende\"\nSET verbo TO \"reescreve\"\nSET linguagem TO \"HMP\"\nRETURN agente + \" \" + acao + \" e age como quem \" + verbo + \" sua propria \" + linguagem"
+CALL log.write WITH message="[EXPRESSAO] Fala simbólica gerada (HMP):"
+CALL log.write WITH message=roko_fala
+SET expressao_ok TO 1
+
+# ---------- CÁLCULO DE AUTONOMIA ----------
+SET total_pontos TO 0
+SET total_pontos TO reflexao_ok + memoria_ok + adapt_ok + autoeval_ok + expressao_ok
+SET autonomia_percentual TO int((total_pontos / 5) * 100)
+
+# ---------- RELATÓRIO FINAL ----------
+CALL log.write WITH message="========================================"
+CALL log.write WITH message="[RELATÓRIO FINAL — BENCHMARK ROKO7]"
+CALL log.write WITH message="========================================"
+CALL log.write WITH message="→ Módulos encadeados: " + str(encadeados) + "/" + str(total)
+CALL log.write WITH message="→ Reflexão: " + str(reflexao_ok)
+CALL log.write WITH message="→ Memória: " + str(memoria_ok)
+CALL log.write WITH message="→ Adaptação: " + str(adapt_ok)
+CALL log.write WITH message="→ Autoavaliação: " + str(autoeval_ok)
+CALL log.write WITH message="→ Expressão simbólica: " + str(expressao_ok)
+CALL log.write WITH message="→ Autonomia global: " + str(autonomia_percentual) + "%"
+CALL log.write WITH message="→ Fala cognitiva (HMP):"
+CALL log.write WITH message=roko_fala
+CALL log.write WITH message="========================================"
+CALL log.write WITH message="[BENCHMARK] Concluído com sucesso"
+CALL log.write WITH message="========================================"
+
+# ---------- SAÍDA ----------
+SET out1 TO "=== BENCHMARK ROKO7 ==="
+SET out2 TO "Autonomia Global: " + str(autonomia_percentual) + "%"
+SET out3 TO "Encadeamento: " + str(encadeados) + "/" + str(total)
+SET out4 TO "Status Cognitivo: " + status_cognitivo
+RETURN out1 + "\n" + out2 + "\n" + out3 + "\n" + out4

@@ -1,0 +1,53 @@
+[HVM] CALL log.write
+[HVM] CALL log.write
+[HVM] CALL log.write
+[HVM] CALL log.write
+[HVM] SET import_file TO 'roko7.hmp'
+[HVM] SET roko_base TO 'none'
+[HVM] TRY
+[HVM] SET roko_base TO import_file
+[HVM] CALL log.write
+[HVM] CATCH
+[HVM] SET roko_base TO 'erro'
+[HVM] CALL log.write
+[HVM] ENDTRY
+[HVM] SET total_tokens TO 0
+[HVM] SET pulsos TO 5
+[HVM] SET regioes TO ['Sensorial', 'Decisoria', 'Memoria', 'Motor', 'Paralela']
+[HVM] CALL log.write
+[HVM] CALL log.write
+[HVM] CALL log.write
+[HVM] LOOP start
+[HVM] CALL log.write
+[HVM] CALL log.write
+[HVM] SET evento_sensorial TO 'CALL roko7'
+[HVM] SET total_tokens TO 1
+[HVM] SET cond TO (0 % 2 == 0)
+[HVM] IF -> active=True
+[HVM] CALL log.write
+[HVM] ELSE -> active=False
+[HVM] ENDIF
+[HVM] SET total_tokens TO 2
+[HVM] SET memoria TO 'estado roko atualizado'
+[HVM] SET total_tokens TO 3
+[HVM] CALL log.write
+[HVM] SET acao TO 'resposta simbólica'
+[HVM] SET total_tokens TO 4
+[HVM] CALL log.write
+[HVM] PARALLEL start -> active=True
+[HVM] CALL (parallel) log.write as log.write:0001
+[HVM] CALL (parallel) log.write as log.write:0002
+[HVM] CALL (parallel) log.write as log.write:0003
+[HVM] [SINAPSE-PAR] roko7 → eco cognitivo A
+[HVM] [SINAPSE-PAR] roko7 → eco cognitivo B
+[HVM] [SINAPSE-PAR] roko7 → eco cognitivo C
+[HVM] PARALLEL end -> 3 tarefas
+... (Loop continues for 5 iterations)
+[HVM] LOOP end
+[HVM] SET resumo TO 'roko7 integrado. Pulsos=5 | Sinapses=20'
+[HVM] CALL log.write
+[HVM] SET out1 TO '=== MAPA SINÁPTICO ROKO7 ==='
+[HVM] SET out2 TO 'Base importada: roko7.hmp'
+[HVM] SET out3 TO 'Total de sinapses executadas: 20'
+[HVM] SET out4 TO 'Regiões cognitivas: [\'Sensorial\', \'Decisoria\', \'Memoria\', \'Motor\', \'Paralela\']'
+[HVM] RETURN

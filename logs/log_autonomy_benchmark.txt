@@ -1,0 +1,25 @@
+[HVM] CALL log.write
+[HVM] SET autonomia_percentual TO 0
+[HVM] CALL log.write
+[HVM] SET reflexao_ok TO 0
+[HVM] SET memoria_ok TO 0
+[HVM] SET adapt_ok TO 0
+[HVM] SET autoeval_ok TO 0
+[HVM] SET expressao_ok TO 0
+[HVM] CALL log.write
+[HVM] CALL log.write
+[HVM] SET import_file TO 'roko7.hmp'
+[HVM] ... (script execution) ...
+[HVM] SET reflexao_ok TO 1
+[HVM] SET memoria_ok TO 1
+[HVM] SET adapt_ok TO 1
+[HVM] SET autoeval_ok TO 1
+[HVM] SET expressao_ok TO 1
+[HVM] SET total_pontos TO 5
+[HVM] SET autonomia_percentual TO 100
+[HVM] CALL log.write
+[HVM] SET out1 TO '=== BENCHMARK ROKO7 ==='
+[HVM] SET out2 TO 'Autonomia Global: 100%'
+[HVM] SET out3 TO 'Encadeamento: 7/7'
+[HVM] SET out4 TO 'Status Cognitivo: COMPLETO'
+[HVM] RETURN
