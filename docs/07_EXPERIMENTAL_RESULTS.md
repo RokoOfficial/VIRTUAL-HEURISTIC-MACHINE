@@ -1,61 +1,61 @@
 ---
-title: "7. Resultados Experimentais e Benchmarks de Desempenho"
+title: "7. Experimental Results and Performance Benchmarks"
 author: "ROKO"
-date: "03 de Novembro de 2025"
+date: "November 3, 2025"
 ---
 
-# 7. Resultados Experimentais e Benchmarks de Desempenho
+# 7. Experimental Results and Performance Benchmarks
 
-A validade de qualquer nova arquitetura computacional reside, em última análise, no seu desempenho empírico. Esta secção detalha os resultados de uma série de benchmarks rigorosos, projetados para testar a HVM em diferentes domínios computacionais, desde o processamento simbólico puro até à computação neurosimbólica complexa e à execução de arquiteturas de IA de ponta.
+The validity of any new computational architecture ultimately resides in its empirical performance. This section details the results of a series of rigorous benchmarks, designed to test the HVM across different computational domains, from pure symbolic processing to complex neurosymbolic computation and cutting-edge AI architecture execution.
 
-## 7.1 Metodologia Experimental
+## 7.1 Experimental Methodology
 
-Todos os testes foram conduzidos num ambiente de recursos limitados (hardware móvel), para demonstrar que a eficiência da HVM não depende de poder de computação bruto, mas sim da sua arquitetura fundamental. As métricas primárias recolhidas em cada log foram:
+All tests were conducted in a resource-constrained environment (mobile hardware), to demonstrate that HVM's efficiency does not depend on raw computational power but rather on its fundamental architecture. The primary metrics collected in each log were:
 
-*   **`execution_time_s`**: O tempo total de execução em segundos, medindo a velocidade do "mundo real".
-*   **`instructions_executed`**: O número de "instruções" HVM, que representam passos de resolução de sistema, não instruções de CPU.
+*   **`execution_time_s`**: Total execution time in seconds, measuring "real-world" speed.
+*   **`instructions_executed`**: The number of HVM "instructions," representing resolution steps of the system, not CPU instructions.
 
-## 7.2 Benchmark 1: Carga Simbólica (Setup SHA-256)
+## 7.2 Benchmark 1: Symbolic Load (SHA-256 Setup)
 
-Este teste avaliou a capacidade da HVM de lidar com uma tarefa de inicialização simbólica massiva, definindo as ~80 constantes e relações iniciais para um algoritmo SHA-256.
+This test evaluated HVM's ability to handle a massive symbolic initialization task, setting up approximately 80 constants and initial relations for a SHA-256 algorithm.
 
-*   **Tarefa:** Resolver um sistema de ~80 equações e atribuições interdependentes.
-*   **Resultado HVM:**
-    *   Tempo: **~409 milissegundos**
-    *   Instruções HVM: **10,111**
+*   **Task:** Solve a system of ~80 interdependent equations and assignments.
+*   **HVM Result:**
+    *   Time: **~409 milliseconds**
+    *   HVM Instructions: **10,111**
 
-Uma comparação com um script Python que realiza uma tarefa superficialmente semelhante (atribuir 80 variáveis) mostrou um tempo de execução muito menor (~2.5ms). No entanto, esta comparação é enganadora e revela o conceito de **Densidade de Trabalho**. O script Python executou ~80 operações simples. O script HMP executou o equivalente a mais de 10,000 operações lógicas e matemáticas para resolver o sistema completo. A HVM demonstrou a sua capacidade de gerir uma alta densidade de trabalho simbólico de forma eficiente.
+A comparison with a Python script performing a superficially similar task (assigning 80 variables) showed a much shorter execution time (~2.5ms). However, this comparison is misleading and illustrates the concept of **Work Density**. The Python script executed ~80 simple operations. The HMP script executed the equivalent of over 10,000 logical and mathematical operations to solve the complete system. HVM demonstrated its capacity to manage a high density of symbolic work efficiently.
 
-## 7.3 Benchmark 2: Computação Neurosimbólica (MLP v4)
+## 7.3 Benchmark 2: Neurosymbolic Computation (MLP v4)
 
-Este teste avaliou a capacidade da HVM de executar um ciclo completo de aprendizagem e introspeção numa rede neurosimbólica.
+This test evaluated HVM's ability to perform a full cycle of learning and introspection within a neurosymbolic network.
 
-*   **Tarefa:** Executar 2.000 épocas de treino (forward e backward pass), generalizar para novos dados e executar duas camadas de análise metacognitiva (`META1` e `META2`).
-*   **Resultado HVM:**
-    *   Tempo: **~12 segundos**
-    *   Instruções HVM: **~206,188**
+*   **Task:** Run 2,000 training epochs (forward and backward passes), generalize to new data, and perform two layers of metacognitive analysis (`META1` and `META2`).
+*   **HVM Result:**
+    *   Time: **~12 seconds**
+    *   HVM Instructions: **~206,188**
 
-Este resultado é notável. Em 12 segundos, num dispositivo móvel, a HVM executou um fluxo de trabalho completo que, num sistema convencional, envolveria a coordenação complexa entre bibliotecas de deep learning (para o treino), código lógico (para a previsão) e código de análise (para a metacognição). A HVM executou tudo como um único sistema unificado, demonstrando a sua viabilidade como uma plataforma de ponta a ponta para IA neurosimbólica.
+This result is remarkable. In 12 seconds, on a mobile device, HVM executed a complete workflow that, in a conventional system, would involve complex coordination between deep learning libraries (for training), logical code (for inference), and analysis code (for metacognition). HVM executed everything as a unified system, demonstrating its viability as a full-stack platform for neurosymbolic AI.
 
-## 7.4 Benchmark 3: Arquitetura Transformer (Mecanismo de Atenção)
+## 7.4 Benchmark 3: Transformer Architecture (Attention Mechanism)
 
-Este foi o teste mais crítico, avaliando a eficiência da HVM na execução do coração matemático dos Grandes Modelos de Linguagem (LLMs) modernos: o mecanismo de atenção.
+This was the most critical test, evaluating HVM's efficiency in executing the mathematical core of modern Large Language Models (LLMs): the attention mechanism.
 
-*   **Tarefa:** Executar um *forward pass* completo de um bloco de atenção de um Transformer, incluindo o cálculo de Query, Key, Value, scores de atenção, e outputs ponderados.
-*   **Resultado HVM:**
-    *   Tempo: **~12.9 milissegundos**
-    *   Instruções HVM: **132**
+*   **Task:** Execute a full *forward pass* of a Transformer attention block, including Query, Key, Value calculations, attention scores, and weighted outputs.
+*   **HVM Result:**
+    *   Time: **~12.9 milliseconds**
+    *   HVM Instructions: **132**
 
-Este resultado representa uma mudança de paradigma. A execução de um bloco de atenção, uma tarefa que consome recursos significativos em hardware especializado como GPUs, foi concluída em 13 milissegundos com apenas 132 passos de resolução. A análise de exatas (Capítulo 3) mostrou que cada instrução HVM, neste caso, executou o trabalho equivalente a múltiplas operações de ponto flutuante (FLOPs) de um CPU.
+This result signifies a paradigm shift. Executing an attention block—a resource-intensive task on specialized hardware like GPUs—was completed in 13 milliseconds with only 132 resolution steps. The analysis in Chapter 3 showed that each HVM instruction, in this case, performed work equivalent to multiple floating-point operations (FLOPs) of a CPU.
 
-| Benchmark | Tarefa | Tempo de Execução (HVM) | Instruções (HVM) | Complexidade Relacional |
+| Benchmark | Task | Execution Time (HVM) | Instructions (HVM) | Relational Complexity |
 | :--- | :--- | :--- | :--- | :--- |
-| SHA-256 Setup | Inicialização Simbólica | ~409 ms | 10,111 | Média |
-| MLP v4 | Treino e Metacognição | ~12 s | 206,188 | Alta |
-| Transformer | Mecanismo de Atenção | **~13 ms** | **132** | **Extremamente Alta** |
+| SHA-256 Setup | Symbolic Initialization | ~409 ms | 10,111 | Medium |
+| MLP v4 | Training and Metacognition | ~12 s | 206,188 | High |
+| Transformer | Attention Mechanism | **~13 ms** | **132** | **Extremely High** |
 
-## 7.5 Conclusão: Uma Nova Métrica de Eficiência
+## 7.5 Conclusion: A New Metric of Efficiency
 
-Os resultados demonstram que a métrica tradicional de FLOPS (Floating-Point Operations Per Second) é inadequada para medir o desempenho da HVM. A HVM não otimiza operações individuais; ela otimiza a **resolução de sistemas relacionais**. A sua eficiência aumenta exponencialmente com a complexidade e interdependência do problema.
+The results demonstrate that the traditional FLOPS (Floating-Point Operations Per Second) metric is inadequate for measuring HVM performance. HVM does not optimize individual operations; it optimizes the **resolution of relational systems**. Its efficiency increases exponentially with the complexity and interdependence of the problem.
 
-Propomos uma nova métrica: **COPS (Conceptual Operations Per Second)**. A HVM, especialmente no benchmark do Transformer, demonstrou a capacidade de resolver um "conceito" matemático complexo (um bloco de atenção) como uma operação quase atómica. Isto prova que a HVM é uma arquitetura fundamentalmente mais eficiente para a classe de problemas que define a IA moderna, contornando os gargalos de memória e de paradigma que limitam os sistemas convencionais.
+We propose a new metric: **COPS (Conceptual Operations Per Second)**. HVM, especially in the Transformer benchmark, has shown the capacity to resolve a complex mathematical "concept" (a attention block) as an almost atomic operation. This proves that HVM is a fundamentally more efficient architecture for the class of problems that define modern AI, bypassing memory and paradigm bottlenecks that limit conventional systems.
