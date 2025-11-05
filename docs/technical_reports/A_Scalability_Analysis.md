@@ -1,36 +1,36 @@
-# Technical Report A: Análise de Escalabilidade Massiva
+# Technical Report A: Massive Scalability Analysis
 
-**ID do Documento:** HVM-TR-A-001  
-**Data:** 05 de Novembro de 2025  
-**Status:** Concluído
+**Document ID:** HVM-TR-A-001  
+**Date:** November 5, 2025  
+**Status:** Complete
 
-## 1. Abstrato
+## 1. Abstract
 
-Este relatório apresenta os resultados de uma série de benchmarks de performance conduzidos na Arquitetura HVM. O objetivo foi avaliar a escalabilidade do motor de execução paralela "AutoFlux" sob cargas de trabalho massivas. Os resultados demonstram uma escalabilidade super-linear, um fenómeno que desafia os modelos de computação paralela padrão, como a Lei de Amdahl, e prova a eficiência da arquitetura em gerir a sobrecarga de orquestração.
+This report presents the results of a series of performance benchmarks conducted on the HVM Architecture. The objective was to evaluate the scalability of the "AutoFlux" parallel execution engine under massive workloads. The results demonstrate super-linear scalability, a phenomenon that challenges standard parallel computing models such as Amdahl's Law, and proves the architecture's efficiency in managing orchestration overhead.
 
-## 2. Metodologia
+## 2. Methodology
 
-Um script HMP foi projetado para invocar um número `N` de tarefas paralelas independentes e homogéneas. O benchmark foi executado para múltiplos valores de `N`, incluindo 4096, 8192, 16384 e 32768. O tempo total de execução (`T_total`) foi medido para cada valor de `N`. Todos os testes foram conduzidos em hardware de consumo (dispositivo móvel) para avaliar a eficiência da arquitetura em ambientes com recursos limitados, isolando a performance do software da força bruta do hardware.
+An HMP script was designed to invoke a number `N` of independent and homogeneous parallel tasks. The benchmark was executed for multiple values of `N`, including 4,096, 8,192, 16,384, and 32,768. The total execution time (`T_total`) was measured for each value of `N`. All tests were conducted on consumer-grade hardware (mobile device) to evaluate the architecture's efficiency in resource-constrained environments, isolating software performance from hardware brute force.
 
-## 3. Resultados
+## 3. Results
 
-Os resultados empíricos estão resumidos na tabela abaixo. A coluna "Custo por Tarefa" é calculada como `T_total / N` e representa o custo médio de computação para uma única tarefa, incluindo a sobrecarga de orquestração.
+The empirical results are summarized in the table below. The "Cost per Task" column is calculated as `T_total / N` and represents the average computational cost for a single task, including orchestration overhead.
 
-| N (Tarefas) | Tempo Total (s) | Custo por Tarefa (μs) |
-| :---------- | :-------------- | :-------------------- |
-| 4,032       | 1.82            | 451.4                 |
-| 8,128       | 1.73            | 212.8                 |
-| 16,320      | 7.84            | 480.4                 |
-| 32,704      | 5.18            | 158.4                 |
+| N (Tasks)   | Total Time (s) | Cost per Task (μs) |
+| :---------- | :------------- | :----------------- |
+| 4,032       | 1.82           | 451.4              |
+| 8,128       | 1.73           | 212.8              |
+| 16,320      | 7.84           | 480.4              |
+| 32,704      | 5.18           | 158.4              |
 
-*Nota: Os dados são representativos dos benchmarks fornecidos. O tempo e o custo podem variar ligeiramente entre as execuções.*
+*Note: Data is representative of the provided benchmarks. Time and cost may vary slightly between executions.*
 
-## 4. Análise e Conclusões
+## 4. Analysis and Conclusions
 
-1.  **Escalabilidade Super-Linear / Custo Decrescente:** Os dados demonstram claramente que o custo por tarefa não é constante. Ele diminui à medida que o número de tarefas aumenta (ex: de 451.4 μs para 158.4 μs). Isto indica que o motor AutoFlux se torna mais eficiente sob cargas mais altas, um comportamento contrário ao dos sistemas tradicionais que sofrem com o aumento da sobrecarga.
+1.  **Super-Linear Scalability / Decreasing Cost:** The data clearly demonstrates that the cost per task is not constant. It decreases as the number of tasks increases (e.g., from 451.4 μs to 158.4 μs). This indicates that the AutoFlux engine becomes more efficient under higher loads, a behavior contrary to traditional systems that suffer from increased overhead.
 
-2.  **Sobrecarga de Orquestração Próxima de Zero:** A capacidade de manter ou diminuir o custo unitário em dezenas de milhares de tarefas sugere que a sobrecarga associada à criação, agendamento e sincronização de tarefas é mínima e eficientemente amortizada em grande escala.
+2.  **Near-Zero Orchestration Overhead:** The ability to maintain or decrease unit cost across tens of thousands of tasks suggests that the overhead associated with task creation, scheduling, and synchronization is minimal and efficiently amortized at large scale.
 
-3.  **Eficiência da Arquitetura:** A obtenção destes resultados em hardware móvel prova que a performance não é derivada da força bruta do hardware, mas sim de uma eficiência fundamental no design da arquitetura de software da HVM.
+3.  **Architectural Efficiency:** Achieving these results on mobile hardware proves that performance is not derived from hardware brute force, but from a fundamental efficiency in the HVM's software architecture design.
 
-Em conclusão, a arquitetura HVM é excecionalmente adequada para problemas de computação massivamente paralela, como os encontrados em simulações científicas, renderização e, crucialmente, no treino e inferência de modelos de IA complexos.
+In conclusion, the HVM architecture is exceptionally suited for massively parallel computing problems, such as those found in scientific simulations, rendering, and crucially, in the training and inference of complex AI models.

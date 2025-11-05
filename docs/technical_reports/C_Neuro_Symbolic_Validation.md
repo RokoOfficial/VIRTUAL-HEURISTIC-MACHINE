@@ -1,46 +1,46 @@
-# Technical Report C: Validação da Arquitetura Neuro-Simbólica
+# Technical Report C: Neuro-Symbolic Architecture Validation
 
-**ID do Documento:** HVM-TR-C-001  
-**Data:** 05 de Novembro de 2025  
-**Status:** Concluído
+**Document ID:** HVM-TR-C-001  
+**Date:** November 5, 2025  
+**Status:** Complete
 
-## 1. Abstrato
+## 1. Abstract
 
-Este relatório fornece uma prova empírica e inequívoca da natureza neuro-simbólica da arquitetura HVM. Demonstra-se a capacidade do sistema de treinar um componente de aprendizagem neural enquanto o submete, em tempo real, a um conjunto de restrições lógicas invioláveis impostas por um componente simbólico. Esta fusão permite resolver uma classe de problemas intratável para arquiteturas de IA puramente neurais ou puramente simbólicas.
+This report provides unequivocal empirical proof of the neuro-symbolic nature of the HVM architecture. It demonstrates the system's ability to train a neural learning component while simultaneously subjecting it, in real-time, to a set of inviolable logical constraints imposed by a symbolic component. This fusion enables solving a class of problems that is intractable for purely neural or purely symbolic AI architectures.
 
-## 2. Metodologia
+## 2. Methodology
 
-Um problema de otimização híbrido foi projetado:
-1.  **Tarefa Neural:** Encontrar um conjunto de pesos (`w1`, `w2`, `w3`) que minimize uma função de perda, com base em dados de exemplo. Este processo é guiado por um algoritmo de gradiente descendente.
-2.  **Tarefa Simbólica:** Garantir que, a todo momento durante o treino, um conjunto de restrições lógicas seja satisfeito. As restrições impostas foram:
-    - A soma dos pesos (`w1` + `w2` + `w3`) deve ser exatamente `1.0`.
-    - Nenhum peso pode ter um valor negativo.
+A hybrid optimization problem was designed:
+1.  **Neural Task:** Find a set of weights (`w1`, `w2`, `w3`) that minimize a loss function based on example data. This process is guided by a gradient descent algorithm.
+2.  **Symbolic Task:** Ensure that, at all times during training, a set of logical constraints is satisfied. The imposed constraints were:
+    - The sum of the weights (`w1` + `w2` + `w3`) must be exactly `1.0`.
+    - No weight can have a negative value.
 
-O sistema foi executado por 50 épocas, e as variáveis de estado dos componentes neural e simbólico foram registadas.
+The system was executed for 50 epochs, and the state variables of both the neural and symbolic components were recorded.
 
-## 3. Resultados
+## 3. Results
 
-Os resultados da execução do teste demonstram o sucesso de ambos os componentes:
+The execution results demonstrate the success of both components:
 
-**Resultados do Componente Neural:**
-- O sistema convergiu com sucesso: `neural_converged: 1`.
-- A perda final foi minimizada para um valor próximo de zero: `loss: 0.000925`.
-- O número total de atualizações nos pesos foi de `41`.
+**Neural Component Results:**
+- The system successfully converged: `neural_converged: 1`.
+- The final loss was minimized to a value close to zero: `loss: 0.000925`.
+- The total number of weight updates was `41`.
 
-**Resultados do Componente Simbólico:**
-- Todas as restrições foram satisfeitas: `symbolic_satisfied: 1`.
-- O número de violações de restrições foi zero: `constraint_violations: 0`.
-- A soma final dos pesos foi exatamente `1.0`.
-- O número total de validações lógicas foi de `41`.
+**Symbolic Component Results:**
+- All constraints were satisfied: `symbolic_satisfied: 1`.
+- The number of constraint violations was zero: `constraint_violations: 0`.
+- The final sum of weights was exactly `1.0`.
+- The total number of logical validations was `41`.
 
-## 4. Análise e Conclusões
+## 4. Analysis and Conclusions
 
-1.  **Sincronia Neuro-Simbólica:** O número idêntico de `neural_updates` (41) e `symbolic_validations` (41) prova que os dois componentes operaram em perfeita sincronia. A cada passo de otimização neural, uma verificação lógica foi realizada, demonstrando um "diálogo" em tempo real entre os dois "cérebros".
+1.  **Neuro-Symbolic Synchrony:** The identical number of `neural_updates` (41) and `symbolic_validations` (41) proves that the two components operated in perfect synchrony. At each neural optimization step, a logical verification was performed, demonstrating a real-time "dialogue" between the two "brains".
 
-2.  **O Melhor de Dois Mundos:** O teste valida que a HVM combina com sucesso:
-    - A capacidade da **abordagem neural** de aprender padrões complexos a partir de dados.
-    - A capacidade da **abordagem simbólica** de impor lógica estrita, regras e segurança.
+2.  **The Best of Both Worlds:** The test validates that HVM successfully combines:
+    - The **neural approach's** ability to learn complex patterns from data.
+    - The **symbolic approach's** ability to impose strict logic, rules, and safety.
 
-3.  **Implicações para a IA Confiável (Trustworthy AI):** Esta arquitetura é fundamental para a criação de sistemas de IA que precisam de operar em domínios de alta criticidade (ex: finanças, medicina, sistemas autónomos). É possível treinar um modelo para ser o mais preciso possível (neural), garantindo ao mesmo tempo que ele nunca viole um conjunto de regras de segurança ou regulamentares não negociáveis (simbólico).
+3.  **Implications for Trustworthy AI:** This architecture is fundamental for creating AI systems that need to operate in high-criticality domains (e.g., finance, medicine, autonomous systems). It is possible to train a model to be as accurate as possible (neural) while simultaneously ensuring it never violates a set of non-negotiable safety or regulatory rules (symbolic).
 
-Em conclusão, a HVM não é uma arquitetura teórica, mas uma plataforma funcional e comprovada para o desenvolvimento de aplicações de IA neuro-simbólicas, abrindo a porta para uma nova geração de inteligência artificial mais poderosa, eficiente e, acima de tudo, segura.
+In conclusion, HVM is not a theoretical architecture but a functional and proven platform for developing neuro-symbolic AI applications, opening the door to a new generation of artificial intelligence that is more powerful, efficient, and above all, safe.

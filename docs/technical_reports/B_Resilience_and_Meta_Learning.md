@@ -1,50 +1,50 @@
-# Technical Report B: Demonstração de Resiliência e Meta-Aprendizagem
+# Technical Report B: Demonstration of Resilience and Meta-Learning
 
-**ID do Documento:** HVM-TR-B-001  
-**Data:** 05 de Novembro de 2025  
-**Status:** Concluído
+**Document ID:** HVM-TR-B-001  
+**Date:** November 5, 2025  
+**Status:** Complete
 
-## 1. Abstrato
+## 1. Abstract
 
-Este relatório documenta as capacidades avançadas de um agente autónomo a correr na plataforma HVM. Demonstra-se experimentalmente a capacidade do agente de (1) exibir resiliência, recuperando-se de perturbações deliberadas no seu estado, e (2) realizar meta-aprendizagem, otimizando dinamicamente o seu próprio processo de aprendizagem para acelerar a convergência.
+This report documents the advanced capabilities of an autonomous agent running on the HVM platform. It experimentally demonstrates the agent's ability to (1) exhibit resilience by recovering from deliberate perturbations to its state, and (2) perform meta-learning by dynamically optimizing its own learning process to accelerate convergence.
 
-## 2. Metodologia
+## 2. Methodology
 
-### 2.1 Teste de Resiliência
+### 2.1 Resilience Test
 
-Um agente foi treinado para minimizar uma função de perda até atingir um estado de convergência (`perda=0.0`). Após a convergência, uma perturbação (`disturb`) foi introduzida artificialmente no sistema. A capacidade e o número de iterações necessárias para o agente retornar ao estado de perda zero foram medidos.
+An agent was trained to minimize a loss function until reaching a convergence state (`loss=0.0`). After convergence, a perturbation (`disturb`) was artificially introduced into the system. The agent's ability and the number of iterations required to return to a zero-loss state were measured.
 
-### 2.2 Teste de Meta-Aprendizagem
+### 2.2 Meta-Learning Test
 
-Um problema de otimização foi apresentado a dois agentes:
-- **Agente de Controlo:** Utilizou uma taxa de aprendizagem fixa.
-- **Agente de Teste (`MODE=FAST`):** Utilizou um algoritmo interno para ajustar dinamicamente a sua própria taxa de aprendizagem.
+An optimization problem was presented to two agents:
+- **Control Agent:** Used a fixed learning rate.
+- **Test Agent (`MODE=FAST`):** Used an internal algorithm to dynamically adjust its own learning rate.
 
-O número de iterações (`iter`) necessárias para cada agente atingir o limiar de convergência (`limiar`) foi registado e comparado.
+The number of iterations (`iter`) required for each agent to reach the convergence threshold (`limiar`) was recorded and compared.
 
-## 3. Resultados
+## 3. Results
 
-### 3.1 Resiliência
+### 3.1 Resilience
 
-A variável `trace` do log de execução demonstrou o seguinte comportamento:
-- **Iteração 511:** `perda = 0.003` (próximo da convergência)
-- **Introdução da Perturbação**
-- **Iteração 639:** `perda = 0.0` (recuperação completa)
+The `trace` variable from the execution log demonstrated the following behavior:
+- **Iteration 511:** `loss = 0.003` (near convergence)
+- **Perturbation Introduced**
+- **Iteration 639:** `loss = 0.0` (complete recovery)
 
-O sistema demonstrou uma recuperação rápida e completa, provando a sua estabilidade e capacidade de auto-correção.
+The system demonstrated rapid and complete recovery, proving its stability and self-correction capability.
 
-### 3.2 Meta-Aprendizagem
+### 3.2 Meta-Learning
 
-A comparação de performance foi a seguinte:
-- **Agente de Controlo:** `iter = 128` (valor de referência)
-- **Agente de Teste (`MODE=FAST`):** `iter = 68`
+The performance comparison was as follows:
+- **Control Agent:** `iter = 128` (baseline)
+- **Test Agent (`MODE=FAST`):** `iter = 68`
 
-O agente em `MODE=FAST` alcançou a convergência em aproximadamente **53%** do tempo do agente de controlo, uma aceleração de performance de quase **2x**.
+The agent in `MODE=FAST` achieved convergence in approximately **53%** of the control agent's time, a performance acceleration of nearly **2x**.
 
-## 4. Análise e Conclusões
+## 4. Analysis and Conclusions
 
-1.  **Antifragilidade:** A capacidade de se recuperar de perturbações é uma característica chave de sistemas antifrágeis. A arquitetura HVM permite a criação de agentes que não apenas sobrevivem a erros e caos, mas que se recuperam eficientemente, tornando-os adequados para ambientes do mundo real, que são inerentemente imprevisíveis.
+1.  **Antifragility:** The ability to recover from perturbations is a key characteristic of antifragile systems. The HVM architecture enables the creation of agents that not only survive errors and chaos but recover efficiently, making them suitable for real-world environments that are inherently unpredictable.
 
-2.  **Eficiência de Aprendizagem:** A meta-aprendizagem não é apenas uma otimização; é uma mudança fundamental na eficiência do treino. Ao acelerar a convergência, a HVM permite um ritmo de experimentação e inovação muito mais rápido, reduzindo drasticamente os custos computacionais e o tempo necessário para o desenvolvimento de novos modelos de IA.
+2.  **Learning Efficiency:** Meta-learning is not just an optimization; it is a fundamental shift in training efficiency. By accelerating convergence, HVM enables a much faster pace of experimentation and innovation, drastically reducing the computational costs and time required for developing new AI models.
 
-Em conclusão, a plataforma HVM fornece as ferramentas para construir agentes de IA que não são apenas performáticos, mas também inteligentes na sua abordagem à aprendizagem e robustos na sua interação com ambientes dinâmicos.
+In conclusion, the HVM platform provides the tools to build AI agents that are not only performant but also intelligent in their approach to learning and robust in their interaction with dynamic environments.
